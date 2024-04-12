@@ -2,7 +2,7 @@ package entities
 
 import (
 	"time"
-
+	_itemShopModel "github.com/TanaratSudjai/project-golang-api-shop/pkg/itemShop/model"
 )
 
 type Item struct {
@@ -17,3 +17,14 @@ type Item struct {
 	UpdatedAt   time.Time `gorm:"not null;autoUpdateTime;"`
 }
 
+
+
+func (i *Item) ToItemModel() *_itemShopModel.Item{
+	return &_itemShopModel.Item{
+		ID: i.ID,
+		Name: i.Name,
+		Description: i.Description,
+		Picture: i.Picture,
+		Price: i.Price,
+	}
+}
